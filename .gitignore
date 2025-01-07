@@ -1,19 +1,17 @@
-./workspace/
-./.idea/
-./.vscode/
-./.git/
-./.gitmodules
-./.github/
-./.gitattributes
-./.editorconfig
-./.env
-./.env.example
-./.env.testing
-./.env.testing.example
-./.env.testing.local
-./.env.testing.local.example
-./.env.local
-./.env.local.example
-./.env.local.testing
-./.env.local.testing.example
-./.env.local.testing.local
+# 忽略 IDE 配置文件夹
+.idea/
+.vscode/
+
+# 忽略工作区配置
+workspace/
+
+# Git 和 Git 子模块相关
+.git/
+.gitmodules
+
+# Git 配置和编辑器配置文件
+.gitattributes
+.editorconfig
+
+# 环境变量文件
+.env*
