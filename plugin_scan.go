@@ -26,7 +26,7 @@ func ScanDepsByPluginCommand(projectDir string, mvnCmdInfo *MvnCommandInfo) (*De
 	c := PluginGraphCmd{
 		MavenCmdInfo: mvnCmdInfo,
 		Profiles:     profiles,
-		Timeout:      time.Duration(60) * time.Second,
+		Timeout:      time.Duration(120) * time.Second, // 120 s
 		ScanDir:      projectDir,
 	}
 
