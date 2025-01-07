@@ -1,7 +1,6 @@
 package model
 
 import (
-	"fmt"
 	"github.com/liwenson/pom_component_parsing/utils"
 )
 
@@ -32,7 +31,6 @@ func (m Module) IsZero() bool {
 func (m Module) ComponentList() []Component {
 	var r = make(map[Component]struct{})
 	__componentList(m.Dependencies, r)
-	fmt.Printf("r: %v", r)
 	return utils.KeysOfMap(r)
 }
 
