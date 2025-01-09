@@ -69,7 +69,7 @@ func convDeps(deps []Dependency) []model.DependencyItem {
 		if d == nil {
 			continue
 		}
-		d.IsDirectDependency = true // 标记为直接依赖
+		//d.IsDirectDependency = true // 标记为直接依赖
 		rs = append(rs, *d)
 	}
 	return rs

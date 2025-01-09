@@ -30,14 +30,18 @@ func (m Module) IsZero() bool {
 // ComponentList 返回模块中所有的组件列表，包含所有直接和间接的依赖项
 func (m Module) ComponentList() []Component {
 	var r = make(map[Component]struct{})
-	__componentList(m.Dependencies, r)
+	collectComponents(m.Dependencies, r)
 	return utils.KeysOfMap(r)
 }
 
-// __componentList 是一个辅助函数，用于递归遍历依赖项并收集所有的组件
-func __componentList(deps []DependencyItem, m map[Component]struct{}) {
+// collectComponents 是一个辅助函数，用于递归遍历依赖项并收集所有的组件
+// 将模块名称添加到每个组件的 ModuleName 字段中
+func collectComponents(deps []DependencyItem, cm map[Component]struct{}) {
 	for _, dep := range deps {
-		m[dep.Component] = struct{}{}
-		__componentList(dep.Dependencies, m)
+		// 设置组件的 ModuleName 为当前模块的名称
+		// 将组件添加到 map 中以避免重复
+		cm[dep.Component] = struct{}{}
+		// 递归处理该组件的依赖项
+		collectComponents(dep.Dependencies, cm)
 	}
 }

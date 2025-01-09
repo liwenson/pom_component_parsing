@@ -10,7 +10,7 @@ import (
 )
 
 func main() {
-	dir := "workspace/newton_buyer"
+	dir := "workspace/platform-promotion-center"
 	modules, e := maven.ScanMavenProject(dir)
 	if e != nil {
 		log.Fatalf("组件解析失败 %v", e)
@@ -26,13 +26,16 @@ func main() {
 	components = utils.DistinctSlice(components)
 
 	for _, component := range components {
-		if component.IsDirectDependency {
+		if component.CompName == "org.mapstruct:mapstruct" {
+			fmt.Println("org.mapstruct:mapstruct")
 			fmt.Printf("component %v\n", component)
 		}
 	}
-	// 让程序休眠 1 分钟
-	time.Sleep(3 * time.Minute)
 
+	// 让程序休眠 1 分钟
+	//time.Sleep(3 * time.Minute)
+
+	fmt.Println("lenght: ", len(components))
 	fmt.Println("End:", time.Now())
 
 }
